@@ -12,19 +12,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          submodules: 'recursive'
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0  # 获取完整历史
-
-      - name: Update Submodule
-        run: |
-          git submodule sync --recursive  
-          git submodule update --recursive  
-          cd themes/butterfly  
-          git status  
-          git fetch origin  
-          git merge origin/main || true  
-          cd ../..  
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
