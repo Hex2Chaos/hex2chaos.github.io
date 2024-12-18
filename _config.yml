@@ -1,8 +1,8 @@
-deploy:
-  type: git
-  repo: https://github.com/Hex2Chaos/hex2chaos.github.io
-  # example, https://github.com/hexojs/hexojs.github.io
-  branch: gh-pages
+#deploy:
+#  type: git
+#  repo: https://github.com/Hex2Chaos/hex2chaos.github.io
+#  # example, https://github.com/hexojs/hexojs.github.io
+#  branch: gh-pages
 
 theme: next
 language: zh-CN

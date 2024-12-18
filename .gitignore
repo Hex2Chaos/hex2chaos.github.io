@@ -7,6 +7,7 @@
 *.iws
 
 node_modules/
+public/
 .deploy_git/
 db.json
 *.log

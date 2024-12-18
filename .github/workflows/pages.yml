@@ -35,6 +35,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./public
+          retention-days: 1  # 可选：设置构建产物保留时间
 
   deploy:
     needs: build
