@@ -1,4 +1,4 @@
-name: Pages
+name: Hexo Blog Deploy
 
 on:
   push:
@@ -9,32 +9,34 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          # If your repository depends on submodule, please see: https://github.com/actions/checkout
-          submodules: recursive
-      - name: Use Node.js v22.5.1
+          submodules: recursive  # 递归克隆子模块
+          fetch-depth: 0  # 获取完整的 Git 历史
+
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          # Examples: 20, 18.19, >=16.20.2, lts/Iron, lts/Hydrogen, *, latest, current, node
-          # Ref: https://github.com/actions/setup-node#supported-version-syntax
-          node-version: "22.5.1"
-      - name: Cache NPM dependencies
-        uses: actions/cache@v4
-        with:
-          path: node_modules
-          key: ${{ runner.OS }}-npm-cache
-          restore-keys: |
-            ${{ runner.OS }}-npm-cache
+          node-version: '18.x'  # 使用稳定的 LTS 版本
+          cache: 'npm'  # 启用 npm 缓存
+
       - name: Install Dependencies
-        run: npm install
-      - name: Build
-        run: npm run build
+        run: |
+          npm install  
+          npm install hexo-cli -g  # 全局安装 Hexo CLI  
+
+      - name: Generate Static Files
+        run: |
+          hexo clean  
+          hexo generate  
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./public
+          path: ./public  # Hexo 默认生成目录
+
   deploy:
     needs: build
     permissions:
