@@ -18,7 +18,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18.x'
+          node-version: '12.16.2'  # 指定具体的 Node.js 版本
           cache: 'npm'
 
       - name: Install Dependencies
