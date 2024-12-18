@@ -1,0 +1,7 @@
+# IntelliJ IDEA directory
+.idea/
+
+# IntelliJ IDEA files
+*.iml
+*.ipr
+*.iws
