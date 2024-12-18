@@ -11,42 +11,26 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.5.0
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          fetch-depth: 0  # 获取完整历史
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 'v22.5.1'  # 指定具体的 Node.js 版本
+          node-version: '12.16.2'
           cache: 'npm'
 
       - name: Install Dependencies
         run: |
           npm install  
           npm install hexo-cli -g  
+          npm install hexo-deployer-git --save  
 
-      - name: Generate Static Files
+      - name: Generate and Deploy
         run: |
           hexo clean  
           hexo generate  
-
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./public
-          retention-days: 1  # 可选：设置构建产物保留时间
-
-  deploy:
-    needs: build
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          hexo deploy  
