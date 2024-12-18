@@ -19,11 +19,11 @@ jobs:
       - name: Troubleshoot Submodule
         run: |
           git submodule sync --recursive  
-          git submodule update --init --recursive --force  
           cd themes/butterfly  
           git fetch origin  
-          git checkout main  # 或者切换到特定分支  
+          git checkout master || git checkout main || git checkout $(git describe --tags `git rev-list --tags --max-count=1`)  
           cd ../..  
+          git submodule update --init --recursive  
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
