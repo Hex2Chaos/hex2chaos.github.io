@@ -16,14 +16,14 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0  # 获取完整历史
 
-      - name: Troubleshoot Submodule
+      - name: Verify Submodule
         run: |
-          git submodule sync --recursive  
-          cd themes/butterfly  
-          git fetch origin  
-          git checkout master || git checkout main || git checkout $(git describe --tags `git rev-list --tags --max-count=1`)  
-          cd ../..  
-          git submodule update --init --recursive  
+            git submodule sync --recursive  
+            git submodule update --init --recursive --force  
+            cd themes/butterfly  
+            git fetch origin  
+            git pull origin main  
+            cd ../..  
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
