@@ -75,12 +75,14 @@ We can create an NPM token by clicking on the avatar -> Access Tokens in the off
 
 ## Why does it get leaked?
 Aside from system hacks or phishing attacks, a common cause of leaks is hardcoding the NPM Token and accidentally publishing it to a public code repository.
+Importantly, [Praetorian exploited the Pwn Request vulnerability to compromise ByteDance’s Rspack.](https://www.praetorian.com/blog/compromising-bytedances-rspack-github-actions-vulnerabilities/)
 
 ## If it gets leaked, it can be exploited for poisoning?
 If two-factor authentication is not enabled, an NPM Token leak could directly grant attackers access to sensitive information or resources, as well as the ability to publish new versions of malicious components.
 
 ## Suggestions
-1. Enable Multi-Factor Authentication (MFA)
+1. [Avoid PWN vulnerabilities](https://www.endorlabs.com/learn/pwn-request-threat-a-hidden-danger-in-github-actions)
+2. Enable Multi-Factor Authentication (MFA)
 2. Regularly Replace Tokens
 3. Store Tokens in a Secure Location
 4. Monitor Logs for Suspicious Activity
