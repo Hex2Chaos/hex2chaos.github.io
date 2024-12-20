@@ -81,7 +81,7 @@ Importantly, [Praetorian exploited the Pwn Request vulnerability to compromise B
 If two-factor authentication is not enabled, an NPM Token leak could directly grant attackers access to sensitive information or resources, as well as the ability to publish new versions of malicious components.
 
 ## Suggestions
-1. [Avoid PWN vulnerabilities](https://www.endorlabs.com/learn/pwn-request-threat-a-hidden-danger-in-github-actions)
+1. [Avoid PWN Request vulnerabilities](https://www.endorlabs.com/learn/pwn-request-threat-a-hidden-danger-in-github-actions)
 2. Enable Multi-Factor Authentication (MFA)
 2. Regularly Replace Tokens
 3. Store Tokens in a Secure Location
