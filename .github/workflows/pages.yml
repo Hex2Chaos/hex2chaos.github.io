@@ -11,19 +11,16 @@ jobs:
     steps:
       - name: Set Timezone
         run: |
-          sudo timedatectl set-timezone Asia/Shanghai
+          sudo timedatectl set-timezone Asia/Shanghai  
           timedatectl
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          # If your repository depends on submodule, please see: https://github.com/actions/checkout
           submodules: recursive
       - name: Use Node.js 20
         uses: actions/setup-node@v4
         with:
-          # Examples: 20, 18.19, >=16.20.2, lts/Iron, lts/Hydrogen, *, latest, current, node
-          # Ref: https://github.com/actions/setup-node#supported-version-syntax
-          node-version: "v22.5.1"
+          node-version: "20"
       - name: Cache NPM dependencies
         uses: actions/cache@v4
         with:
@@ -33,11 +30,10 @@ jobs:
             ${{ runner.OS }}-npm-cache
       - name: Install Dependencies
         run: npm install
-      - name: Build
-        run: npm run build
       - name: Clean Hexo Cache
-        run: |
-          npx hexo clean
+        run: npx hexo clean
+      - name: Build
+        run: npx hexo generate
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
