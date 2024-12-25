@@ -1,5 +1,6 @@
 ---
 title: The classic machine learning dataset—MNIST
+date: 2024-12-25 23:00:00
 top: true
 ---
 <!--more-->
