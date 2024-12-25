@@ -15,7 +15,12 @@ jobs:
           timedatectl
       - name: Restore file modification time
         run: |
-          git ls-files -z | while read -d '' path; do touch -d "$(git log -1 --format="@%ct" "$path")" "$path"; done
+          if [ -d "source/_posts" ]; then  
+            find source/_posts source/_drafts -name '*.md' | while read file; do  
+              git_time=$(git log -1 --format="@%ct" "$file")  
+              touch -d "$git_time" "$file"  
+            done  
+          fi
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}

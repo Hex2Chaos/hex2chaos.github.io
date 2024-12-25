@@ -10,6 +10,7 @@ auto_excerpt:
 theme: next
 language: zh-CN
 timezone: Asia/Shanghai
+updated_option: 'mtime'
 search:
   path: search.xml
   field: post
