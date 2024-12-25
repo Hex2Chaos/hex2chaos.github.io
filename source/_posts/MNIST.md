@@ -204,3 +204,4 @@ model.save('mnist_model.h5')
 loaded_model = tf.keras.models.load_model('mnist_model.h5')
 print("The model has been saved and successfully loaded!")
 ```
+<!--more-->
