@@ -9,6 +9,7 @@ auto_excerpt:
 
 theme: next
 language: zh-CN
+timezone: Asia/Shanghai
 search:
   path: search.xml
   field: post
