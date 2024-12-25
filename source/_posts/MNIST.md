@@ -2,22 +2,23 @@
 title: The classic machine learning dataset—MNIST
 top: true
 ---
+<!--more-->
 Today, we will locally test a classic machine learning dataset—MNIST (Modified National Institute of Standards and Technology database). This dataset is primarily used for training and testing image classification models, especially for handwritten digit recognition tasks.
 
 ## Introduction to the MNIST Dataset
-### 1. Content
+### Content
 - The MNIST dataset contains 70,000 grayscale images of handwritten digits.
 - Each image is a 28x28 pixel grayscale image, with pixel values ranging from 0 to 255.
 - The dataset is divided into two parts: 
   + Training set: 60,000 images.
   + Test set: 10,000 images.
 - Each image corresponds to a label that indicates the digit (0 to 9) in the image.
-### 2. Applications of MNIST
+### Applications of MNIST
 - Image Classification: Training a model to recognize handwritten digits.  
 - Model Validation: Testing the performance of machine learning models.  
 - Algorithm Comparison: Comparing the effectiveness of different algorithms (such as SVM, KNN, neural networks, etc.).  
 - Introduction to Deep Learning: Implementing classification tasks using simple neural networks (such as fully connected networks and convolutional neural networks).
-### 3. Characteristics of Models Trained on MNIST
+### Characteristics of Models Trained on MNIST
 - Simplicity
   Beginners can start with simple linear models (such as logistic regression or SVM).
   They can then try more complex models (such as multilayer perceptrons (MLP) or convolutional neural networks (CNN)).
@@ -29,6 +30,7 @@ Today, we will locally test a classic machine learning dataset—MNIST (Modified
   MNIST serves as the foundation for many more complex datasets. For example, Fashion-MNIST (for clothing classification) and EMNIST (Extended MNIST) are both variants based on MNIST
 
 ## Code
+### import
 ```python
 import tensorflow as tf
 from tensorflow.keras import Sequential  
@@ -62,8 +64,8 @@ Function: Import the NumPy library and abbreviate it as np.
 NumPy is a library for scientific computing that provides efficient operations on multi-dimensional arrays.  
 In deep learning, NumPy is commonly used for data processing (such as array operations, random number generation, matrix calculations, etc.).
 
+### Load the MNIST Dataset
 ```python
-# 1. Load the MNIST Dataset
 # The MNIST dataset contains 60,000 training images and 10,000 testing images, with each image being a 28x28 grayscale image.  
 (x_train, y_train), (x_test, y_test) = mnist.load_data()  
     
@@ -81,8 +83,8 @@ y_train: Contains the training set labels of the MNIST dataset. The data type is
 x_test: Contains the test set image data of the MNIST dataset. The data type is a NumPy array with a shape of (10000, 28, 28). It includes 10,000 images of handwritten digits, each image being a 28x28 grayscale image.  
 y_test: Contains the test set labels of the MNIST dataset. The data type is a NumPy array with a shape of (10000,). Each value is an integer representing the digit label (0 to 9) corresponding to the respective test image.
 
+### Data Visualization
 ```python
-# 2. Data Visualization
 # Randomly view a few images to understand the data
 def visualize_data(images, labels, num_samples=5):  
     # Define a function `visualize_data` for visualizing data.  
@@ -107,8 +109,8 @@ def visualize_data(images, labels, num_samples=5):
 ```
 ![MNIST images](/assets/2024-12-26-MNIST/visualize_data.jpg)
 
+### Data Preprocessing
 ```python
-# 3. Data Preprocessing
 # Normalization: Scale pixel values from 0-255 to 0-1 to enhance the efficiency and stability of model training.
 x_train = x_train / 255.0
 x_test = x_test / 255.0
@@ -116,8 +118,10 @@ x_test = x_test / 255.0
 # One-hot Encoding of Labels: Convert labels from integers to one-hot encoded format, suitable for classification tasks.
 y_train = tf.keras.utils.to_categorical(y_train, 10)
 y_test = tf.keras.utils.to_categorical(y_test, 10)
+```
 
-# 4. Building the Model
+### Building the Model
+```
 # Use Keras to construct a simple fully connected neural network (MLP) model.
 model = Sequential([
     Flatten(input_shape=(28, 28)),  # Flatten the 28x28 images into one-dimensional vectors.
@@ -130,17 +134,17 @@ model = Sequential([
 model.summary()
 ```
 ![model.jpg](/assets/2024-12-26-MNIST/model.jpg)
+### Compile the Model
 ```python
-
-# 5. Compile the Model
 # Specify the optimizer, loss function, and evaluation metrics
 model.compile(
     optimizer='adam',  # Adam optimizer, suitable for beginners, automatically adjusts the learning rate
     loss='categorical_crossentropy',  # Categorical crossentropy loss function for multi-class classification
     metrics=['accuracy']  # Evaluation metric is accuracy
 )
-
-# 6. Train the Model
+```
+### Train the Model
+```
 # Train the model using the training data and validate its performance on the test set
 history = model.fit(
     x_train, y_train,  # Training data
@@ -149,14 +153,16 @@ history = model.fit(
     batch_size=32,  # 32 samples per batch
     verbose=2  # Display detailed information about the training process
 )
-
-# 7. Evaluate the Model
+```
+### Evaluate the Model
+```
 # Evaluate the model's performance on the test set
 test_loss, test_accuracy = model.evaluate(x_test, y_test, verbose=0)
 print(f"Test set loss: {test_loss:.4f}")
 print(f"Test set accuracy: {test_accuracy:.4f}")
-
-# 8. Visualize the Training Process
+```
+### Visualize the Training Process
+```
 # Plot the accuracy curves for training and validation
 plt.figure(figsize=(12, 4))
 plt.subplot(1, 2, 1)
@@ -178,8 +184,8 @@ plt.title('Training and Validation Loss')
 plt.show()
 ```
 ![accuracy_and_loss](/assets/2024-12-26-MNIST/accuracy_and_loss.jpg)
+### using the Model for Prediction
 ```python
-# 9. Using the Model for Prediction
 # Randomly select a test image for prediction
 index = np.random.randint(0, x_test.shape[0])
 test_image = x_test[index]
@@ -195,8 +201,8 @@ plt.axis('off')
 plt.show()
 ```
 ![benchmark](/assets/2024-12-26-MNIST/benchmark.jpg)
+### Saving and Loading the Model
 ```
-# 10. Saving and Loading the Model
 # Save the model to a file
 model.save('mnist_model.h5')
 
@@ -204,4 +210,3 @@ model.save('mnist_model.h5')
 loaded_model = tf.keras.models.load_model('mnist_model.h5')
 print("The model has been saved and successfully loaded!")
 ```
-<!--more-->

@@ -2,7 +2,7 @@
 title: A poisoning incident caused by an NPM token leak
 ---
 ## Background
-
+<!--more-->
 Due to the leak of a developer's NPM token, the NPM packages Vant, @rspack/core, and @rspack/cli were poisoned.
 [![Issues](/assets/2024-12-19/token-leak-github.jpg)](https://github.com/youzan/vant/discussions/13273)
 The attacker embedded the mining software xmrig in the code and stole users' cloud service credentials.
@@ -85,4 +85,3 @@ If two-factor authentication is not enabled, an NPM Token leak could directly gr
 2. Regularly Replace Tokens
 3. Store Tokens in a Secure Location
 4. Monitor Logs for Suspicious Activity
-<!--more-->

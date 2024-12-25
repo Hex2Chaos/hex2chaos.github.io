@@ -5,7 +5,7 @@ deploy:
 
 auto_excerpt:
   enable: true
-  length: 350
+  length: 550
 
 theme: next
 language: zh-CN
