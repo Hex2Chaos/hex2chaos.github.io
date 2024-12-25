@@ -1,6 +1,5 @@
 ---
 title: A poisoning incident caused by an NPM token leak
-top: true
 ---
 ## Background
 
