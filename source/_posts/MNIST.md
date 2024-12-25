@@ -63,7 +63,7 @@ NumPy is a library for scientific computing that provides efficient operations o
 In deep learning, NumPy is commonly used for data processing (such as array operations, random number generation, matrix calculations, etc.).
 
 ```python
-# **1. Load the MNIST Dataset**  
+# 1. Load the MNIST Dataset
 # The MNIST dataset contains 60,000 training images and 10,000 testing images, with each image being a 28x28 grayscale image.  
 (x_train, y_train), (x_test, y_test) = mnist.load_data()  
     
@@ -82,7 +82,7 @@ x_test: Contains the test set image data of the MNIST dataset. The data type is 
 y_test: Contains the test set labels of the MNIST dataset. The data type is a NumPy array with a shape of (10000,). Each value is an integer representing the digit label (0 to 9) corresponding to the respective test image.
 
 ```python
-# **2. Data Visualization**
+# 2. Data Visualization
 # Randomly view a few images to understand the data
 def visualize_data(images, labels, num_samples=5):  
     # Define a function `visualize_data` for visualizing data.  
@@ -108,7 +108,7 @@ def visualize_data(images, labels, num_samples=5):
 ![MNIST images](/assets/2024-12-26-MNIST/visualize_data.jpg)
 
 ```python
-# **3. Data Preprocessing**
+# 3. Data Preprocessing
 # Normalization: Scale pixel values from 0-255 to 0-1 to enhance the efficiency and stability of model training.
 x_train = x_train / 255.0
 x_test = x_test / 255.0
@@ -117,7 +117,7 @@ x_test = x_test / 255.0
 y_train = tf.keras.utils.to_categorical(y_train, 10)
 y_test = tf.keras.utils.to_categorical(y_test, 10)
 
-# **4. Building the Model**
+# 4. Building the Model
 # Use Keras to construct a simple fully connected neural network (MLP) model.
 model = Sequential([
     Flatten(input_shape=(28, 28)),  # Flatten the 28x28 images into one-dimensional vectors.
@@ -132,7 +132,7 @@ model.summary()
 ![model.jpg](/assets/2024-12-26-MNIST/model.jpg)
 ```python
 
-# **5. Compile the Model**
+# 5. Compile the Model
 # Specify the optimizer, loss function, and evaluation metrics
 model.compile(
     optimizer='adam',  # Adam optimizer, suitable for beginners, automatically adjusts the learning rate
@@ -140,7 +140,7 @@ model.compile(
     metrics=['accuracy']  # Evaluation metric is accuracy
 )
 
-# **6. Train the Model**
+# 6. Train the Model
 # Train the model using the training data and validate its performance on the test set
 history = model.fit(
     x_train, y_train,  # Training data
@@ -150,13 +150,13 @@ history = model.fit(
     verbose=2  # Display detailed information about the training process
 )
 
-# **7. Evaluate the Model**
+# 7. Evaluate the Model
 # Evaluate the model's performance on the test set
 test_loss, test_accuracy = model.evaluate(x_test, y_test, verbose=0)
 print(f"Test set loss: {test_loss:.4f}")
 print(f"Test set accuracy: {test_accuracy:.4f}")
 
-# **8. Visualize the Training Process**
+# 8. Visualize the Training Process
 # Plot the accuracy curves for training and validation
 plt.figure(figsize=(12, 4))
 plt.subplot(1, 2, 1)
@@ -179,7 +179,7 @@ plt.show()
 ```
 ![accuracy_and_loss](/assets/2024-12-26-MNIST/accuracy_and_loss.jpg)
 ```python
-# **9. Using the Model for Prediction**
+# 9. Using the Model for Prediction
 # Randomly select a test image for prediction
 index = np.random.randint(0, x_test.shape[0])
 test_image = x_test[index]
@@ -196,7 +196,7 @@ plt.show()
 ```
 ![benchmark](/assets/2024-12-26-MNIST/benchmark.jpg)
 ```
-# **10. Saving and Loading the Model**
+# 10. Saving and Loading the Model
 # Save the model to a file
 model.save('mnist_model.h5')
 
