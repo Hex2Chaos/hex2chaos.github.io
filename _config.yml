@@ -3,6 +3,10 @@ deploy:
   repo: https://github.com/Hex2Chaos/hex2chaos.github.io
   branch: gh-pages
 
+auto_excerpt:
+  enable: true
+  length: 350
+
 theme: next
 language: zh-CN
 search:
