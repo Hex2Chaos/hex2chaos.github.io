@@ -35,6 +35,9 @@ jobs:
         run: npm install
       - name: Build
         run: npm run build
+      - name: Clean Hexo Cache
+        run: |
+          npx hexo clean
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
