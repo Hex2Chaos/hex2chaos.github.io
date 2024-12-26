@@ -1,6 +1,8 @@
 ---
 title: The classic machine learning dataset—MNIST
 top: true
+date: 2024-12-25 23:00:00
+updated: 2024-12-26 04:00:00
 ---
 <!--more-->
 Today, we will locally test a classic machine learning dataset—MNIST (Modified National Institute of Standards and Technology database). This dataset is primarily used for training and testing image classification models, especially for handwritten digit recognition tasks.

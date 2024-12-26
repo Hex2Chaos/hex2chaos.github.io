@@ -1,5 +1,6 @@
 ---
 title: A poisoning incident caused by an NPM token leak
+date: 2024-12-18 00:00:00
 ---
 ## Background
 <!--more-->

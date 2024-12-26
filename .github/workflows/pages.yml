@@ -9,15 +9,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Set Timezone
-        run: |
-          sudo timedatectl set-timezone Asia/Shanghai  
-          timedatectl
-      - name: Restore file modification time
-        run: |
-          git ls-files -z | while read -d '' path; do  
-            touch -d "$(git log -1 --format="@%ct" "$path")" "$path"  
-          done
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
