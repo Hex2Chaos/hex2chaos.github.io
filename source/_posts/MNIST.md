@@ -4,7 +4,6 @@ categories:
   - AI
 tags:
   - MNIST
-top: true
 date: 2024-12-25 23:00:00
 ---
 <!--more-->
