@@ -1,5 +1,5 @@
 ---
-title: NPM-Poison-Package:rbx-api-ts
+title: The attack on Roblox developers is still ongoing
 categories:
   - Security
 tags:
@@ -7,7 +7,7 @@ tags:
 date: 2024-12-26 22:00:00
 ---
 ## Summary
-The attack on Roblox developers is still ongoing. A malicious NPM package called rbx-api-ts is disguised with a name similar to [rbx-reader](https://github.com/littleBitsman/rbx-reader) to confuse users. Its purpose is to steal Discord tokens, install the Quasar RAT (a remote access tool), and disable or modify security software.
+A malicious NPM package called rbx-api-ts is disguised with a name similar to [rbx-reader](https://github.com/littleBitsman/rbx-reader) to confuse users. Its purpose is to steal Discord tokens, install the Quasar RAT (a remote access tool), and disable or modify security software.
 The malware also tampers with the Windows registry to activate itself whenever the user opens the Settings app.
 ![](/assets/2024-12-26/rbx-api-ts.jpg)
 ## Attack Path
