@@ -8,6 +8,7 @@ auto_excerpt:
   length: 550
 
 theme: next
+author: ChenYang
 language: zh-CN
 timezone: Asia/Shanghai
 updated_option: 'mtime'
