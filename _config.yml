@@ -11,6 +11,7 @@ theme: next
 language: zh-CN
 timezone: Asia/Shanghai
 updated_option: 'mtime'
+title: Hello AGI
 search:
   path: search.xml
   field: post
